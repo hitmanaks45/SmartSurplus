@@ -6,6 +6,22 @@ It provides a simple platform where surplus food can be shared efficiently, help
 
 ---
 
+## Screenshots
+
+### Map View
+
+![SmartSurplus map view](docs/images/map-view.png)
+
+### Post a Donation
+
+![SmartSurplus post donation form](docs/images/post-donation.png)
+
+### Donor Profile
+
+![SmartSurplus donor profile page](docs/images/donor-profile.png)
+
+---
+
 ## Features
 
 ### Authentication and Authorization
