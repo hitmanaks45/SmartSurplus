@@ -47,26 +47,26 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-68px)] bg-gray-100 flex items-center justify-center p-4">
-      <div className="container mx-auto max-w-6xl">
-        <div className="bg-white rounded-2xl shadow-2xl flex flex-col md:flex-row overflow-hidden">
+    <div className="flex min-h-[calc(100vh-73px)] items-center justify-center bg-slate-50 px-4 py-12">
+      <div className="mx-auto w-full max-w-6xl">
+        <div className="grid overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl md:grid-cols-[0.9fr_1.1fr]">
           {/* Left Motivational Part */}
-          <div className="md:w-5/12 bg-green-500 hover:bg-green-600 transition transform hover:scale-105 text-white p-8 md:p-12 flex flex-col justify-center items-center text-center">
-            <Users className="w-16 h-16 mb-4 opacity-80" />
-            <h1 className="text-4xl font-bold leading-tight mb-3">Welcome Back</h1>
-            <p className="text-lg text-green-100 opacity-90">
-              Your continued support helps us build a stronger community. Thank you for being a part of the change.
+          <div className="bg-slate-950 p-8 text-white md:p-12">
+            <Users className="mb-6 h-12 w-12 rounded-xl bg-emerald-400/15 p-2.5 text-emerald-300" />
+            <h1 className="text-3xl font-bold tracking-tight md:text-4xl">Welcome Back</h1>
+            <p className="mt-4 leading-7 text-slate-300">
+              Continue coordinating donations, finding nearby food resources, and supporting your community.
             </p>
           </div>
 
           {/* Right Form Part */}
-          <div className="md:w-7/12 p-8 md:p-12">
-            <div className="flex flex-col items-center mb-6">
-              <div className="bg-green-100 p-3 rounded-full mb-3">
-                <LogIn className="w-8 h-8 text-green-500" />
+          <div className="p-8 md:p-12">
+            <div className="mb-8">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
+                <LogIn className="h-7 w-7" />
               </div>
-              <h2 className="text-3xl font-bold text-gray-900">Sign In</h2>
-              <p className="text-gray-500 mt-1">to continue to SmartSurplus</p>
+              <h2 className="text-3xl font-bold tracking-tight text-slate-950">Sign In</h2>
+              <p className="mt-2 text-slate-500">Enter your details to continue to SmartSurplus.</p>
             </div>
 
             <form onSubmit={onSubmit} className="space-y-6">
@@ -81,7 +81,7 @@ const LoginPage = () => {
                     value={email}
                     onChange={onChange}
                     placeholder="Email Address"
-                    className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full rounded-lg border border-slate-300 bg-white py-3 pl-10 pr-4 text-slate-900 shadow-sm outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
                     required
                  />
               </div>
@@ -97,7 +97,7 @@ const LoginPage = () => {
                     value={password}
                     onChange={onChange}
                     placeholder="Password"
-                    className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full rounded-lg border border-slate-300 bg-white py-3 pl-10 pr-4 text-slate-900 shadow-sm outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
                     required
                  />
               </div>
@@ -106,7 +106,7 @@ const LoginPage = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-lg font-medium text-white bg-green-500 hover:bg-green-600 transition transform hover:scale-105 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-transform transform hover:scale-105 disabled:bg-green-400"
+                  className="flex w-full justify-center rounded-lg border border-transparent bg-emerald-500 px-4 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-emerald-300"
                 >
                   {isLoading ? 'Logging In...' : 'Log In'}
                 </button>
@@ -115,7 +115,7 @@ const LoginPage = () => {
 
             <p className="mt-8 text-center text-sm text-gray-600">
               Don't have an account?{' '}
-              <Link to="/register" className="font-medium text-green-500 hover:text-green-500">
+              <Link to="/register" className="font-semibold text-emerald-600 hover:text-emerald-700">
                 Sign up
               </Link>
             </p>

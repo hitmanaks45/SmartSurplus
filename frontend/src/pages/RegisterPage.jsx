@@ -51,26 +51,26 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-68px)] bg-gray-100 flex items-center justify-center p-4">
-      <div className="container mx-auto max-w-6xl">
-        <div className="bg-white rounded-2xl shadow-2xl flex flex-col md:flex-row overflow-hidden">
+    <div className="flex min-h-[calc(100vh-73px)] items-center justify-center bg-slate-50 px-4 py-12">
+      <div className="mx-auto w-full max-w-6xl">
+        <div className="grid overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl md:grid-cols-[0.9fr_1.1fr]">
           {/* Left Motivational Part */}
-          <div className="md:w-5/12 bg-green-500 hover:bg-green-600 transition transform hover:scale-105 text-white p-8 md:p-12 flex flex-col justify-center items-center text-center">
-            <HandHeart className="w-16 h-16 mb-4 opacity-80" />
-            <h1 className="text-4xl font-bold leading-tight mb-3">Join the Movement</h1>
-            <p className="text-lg text-green-100 opacity-90">
-              Create an account to start sharing surplus food and help us fight hunger in our community. Every contribution matters.
+          <div className="bg-slate-950 p-8 text-white md:p-12">
+            <HandHeart className="mb-6 h-12 w-12 rounded-xl bg-emerald-400/15 p-2.5 text-emerald-300" />
+            <h1 className="text-3xl font-bold tracking-tight md:text-4xl">Join the Movement</h1>
+            <p className="mt-4 leading-7 text-slate-300">
+              Create an account to share surplus food, receive donations, and support people nearby.
             </p>
           </div>
 
           {/* Right Form Part */}
-          <div className="md:w-7/12 p-8 md:p-12">
-            <div className="flex flex-col items-center mb-6">
-              <div className="bg-green-100 p-3 rounded-full mb-3">
-                <UserPlus className="w-8 h-8 text-green-500" />
+          <div className="p-8 md:p-12">
+            <div className="mb-8">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
+                <UserPlus className="h-7 w-7" />
               </div>
-              <h2 className="text-3xl font-bold text-gray-900">Create an Account</h2>
-              <p className="text-gray-500 mt-1">to start making a difference</p>
+              <h2 className="text-3xl font-bold tracking-tight text-slate-950">Create an Account</h2>
+              <p className="mt-2 text-slate-500">Start making a measurable community impact.</p>
             </div>
 
             <form onSubmit={onSubmit} className="space-y-4">
@@ -79,7 +79,7 @@ const RegisterPage = () => {
                     <User className="h-5 w-5 text-gray-400" />
                  </div>
                  <input type="text" name="name" value={name} onChange={onChange} placeholder="Full Name"
-                    className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required />
+                    className="w-full rounded-lg border border-slate-300 bg-white py-3 pl-10 pr-4 text-slate-900 shadow-sm outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100" required />
               </div>
 
               <div className="relative">
@@ -87,7 +87,7 @@ const RegisterPage = () => {
                     <AtSign className="h-5 w-5 text-gray-400" />
                  </div>
                  <input type="email" name="email" value={email} onChange={onChange} placeholder="Email Address"
-                    className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required />
+                    className="w-full rounded-lg border border-slate-300 bg-white py-3 pl-10 pr-4 text-slate-900 shadow-sm outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100" required />
               </div>
 
               <div className="relative">
@@ -95,7 +95,7 @@ const RegisterPage = () => {
                     <KeyRound className="h-5 w-5 text-gray-400" />
                  </div>
                  <input type="password" name="password" value={password} onChange={onChange} placeholder="Password"
-                    className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required />
+                    className="w-full rounded-lg border border-slate-300 bg-white py-3 pl-10 pr-4 text-slate-900 shadow-sm outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100" required />
               </div>
               
               <div className="relative">
@@ -103,20 +103,20 @@ const RegisterPage = () => {
                     <KeyRound className="h-5 w-5 text-gray-400" />
                  </div>
                  <input type="password" name="password2" value={password2} onChange={onChange} placeholder="Confirm Password"
-                    className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required />
+                    className="w-full rounded-lg border border-slate-300 bg-white py-3 pl-10 pr-4 text-slate-900 shadow-sm outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100" required />
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700">I am a...</label>
+                <label className="text-sm font-medium text-slate-700">I am a...</label>
                 <div className="flex gap-4">
                   <button type="button" onClick={() => setFormData({...formData, role: 'donor'})}
-                    className={`w-full flex items-center justify-center gap-2 p-3 rounded-lg border-2 transition ${role === 'donor' ? 'border-green-500 bg-green-50' : 'border-gray-300'}`}>
-                    <HandHeart className={`h-5 w-5 ${role === 'donor' ? 'text-green-500' : 'text-gray-500'}`} />
+                    className={`flex w-full items-center justify-center gap-2 rounded-lg border p-3 transition ${role === 'donor' ? 'border-emerald-500 bg-emerald-50 text-emerald-700' : 'border-slate-300 text-slate-600 hover:border-slate-400'}`}>
+                    <HandHeart className={`h-5 w-5 ${role === 'donor' ? 'text-emerald-600' : 'text-slate-500'}`} />
                     <span className="font-semibold">Donor</span>
                   </button>
                   <button type="button" onClick={() => setFormData({...formData, role: 'receiver'})}
-                    className={`w-full flex items-center justify-center gap-2 p-3 rounded-lg border-2 transition ${role === 'receiver' ? 'border-green-500 bg-green-50' : 'border-gray-300'}`}>
-                    <Utensils className={`h-5 w-5 ${role === 'receiver' ? 'text-green-500' : 'text-gray-500'}`} />
+                    className={`flex w-full items-center justify-center gap-2 rounded-lg border p-3 transition ${role === 'receiver' ? 'border-emerald-500 bg-emerald-50 text-emerald-700' : 'border-slate-300 text-slate-600 hover:border-slate-400'}`}>
+                    <Utensils className={`h-5 w-5 ${role === 'receiver' ? 'text-emerald-600' : 'text-slate-500'}`} />
                     <span className="font-semibold">Receiver</span>
                   </button>
                 </div>
@@ -125,7 +125,7 @@ const RegisterPage = () => {
               <div className="pt-2">
                 <button type="submit"
                   disabled={isLoading}
-                  className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-lg font-medium text-white bg-green-500 hover:bg-green-600 transition transform hover:scale-105 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-transform transform hover:scale-105 disabled:bg-green-400"
+                  className="flex w-full justify-center rounded-lg border border-transparent bg-emerald-500 px-4 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-emerald-300"
                 >
                   {isLoading ? 'Signing Up...' : 'Sign Up'}
                 </button>
@@ -134,7 +134,7 @@ const RegisterPage = () => {
 
             <p className="mt-6 text-center text-sm text-gray-600">
               Already have an account?{' '}
-              <Link to="/login" className="font-medium text-green-500 hover:text-green-500">
+              <Link to="/login" className="font-semibold text-emerald-600 hover:text-emerald-700">
                 Log in
               </Link>
             </p>
