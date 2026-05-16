@@ -1,111 +1,154 @@
-# 🌍 SmartSurplus - Food Donation Platform
+# SmartSurplus - Food Donation Platform
 
-SmartSurplus is a full-stack web application designed to reduce food waste by connecting donors (restaurants, events, individuals) with receivers (NGOs, charities, and people in need).
+SmartSurplus is a full-stack web application designed to reduce food waste by connecting donors, such as restaurants, event organizers, and individuals, with receivers, such as NGOs, charities, and people in need.
 
-It provides a seamless platform where surplus food can be shared efficiently, helping build a more sustainable and compassionate community.
+It provides a simple platform where surplus food can be shared efficiently, helping build a more sustainable and compassionate community.
 
 ---
 
-## 🚀 Features
+## Features
 
-### 🔐 Authentication & Authorization
+### Authentication and Authorization
+
 - Secure user registration and login
-- Role-based access (Donor / Receiver)
+- Role-based access for donors and receivers
 
-### 🍱 Food Donation System
+### Food Donation System
+
 - Donors can post surplus food details
-- Includes quantity, expiry, and pickup location
+- Donation details include quantity, expiry time, and pickup location
 
-### 🗺️ Interactive Map
-- View nearby food donations using map integration
-- Location-based discovery of food resources
+### Interactive Map
 
-### 🤝 Claim & Connect
-- Receivers can claim donations
-- Direct coordination between donor and receiver
+- Users can view nearby food donations using map integration
+- Location-based discovery helps receivers find available food resources
 
-### 🔔 Real-time Feedback
-- Toast notifications for actions (success/error)
+### Claim and Connect
 
-### 📱 Responsive UI
-- Fully responsive design using Tailwind CSS
+- Receivers can claim available donations
+- Donors and receivers can coordinate directly
+
+### Real-Time Feedback
+
+- Toast notifications show success and error messages for user actions
+
+### Responsive UI
+
+- Fully responsive design built with Tailwind CSS
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
-- React.js (Vite)
+
+- React.js with Vite
 - Tailwind CSS
 - Axios
 - React Router
-- Leaflet (Maps)
+- Leaflet for maps
 
 ### Backend
+
 - Node.js
 - Express.js
 - MongoDB
 - Mongoose
-- JWT Authentication
+- JWT authentication
 
 ---
 
-## 📁 Project Structure
+## Project Structure
+
+```text
 SmartSurplus/
-│
-├── frontend/ # React Frontend
-├── backend/ # Node.js Backend
-├── README.md
+├── frontend/   # React frontend
+├── backend/    # Node.js backend
+└── README.md
+```
 
 ---
 
-## ⚙️ Setup Instructions
+## Setup Instructions
 
-### 1️⃣ Clone the Repository
+### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/your-username/SmartSurplus.git
 cd SmartSurplus
-2️⃣ Setup Backend
+```
+
+### 2. Set Up the Backend
+
+```bash
 cd backend
 npm install
-Create .env file inside backend:
+```
 
+Create a `.env` file inside the `backend` folder:
+
+```env
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
+```
 
-Run backend:
+Start the backend server:
+
+```bash
 npm start
+```
 
-3️⃣ Setup Frontend
+### 3. Set Up the Frontend
+
+Open a new terminal, then run:
+
+```bash
 cd frontend
 npm install
 npm run dev
+```
 
-🌐 Environment Variables
-Variable	Description
-MONGO_URI	MongoDB connection string
-JWT_SECRET	Secret key for authentication
-VITE_API_URL	Backend API URL
+---
 
-🎯 Future Improvements
-Donation status tracking (Pending / Completed)
-User dashboard
-Chat system between donor and receiver
-Notifications system
+## Environment Variables
 
-🤝 Contributing
+| Variable | Description |
+| --- | --- |
+| `PORT` | Backend server port |
+| `MONGO_URI` | MongoDB connection string |
+| `JWT_SECRET` | Secret key for authentication |
+| `VITE_API_URL` | Backend API URL |
 
-Feel free to fork this repository and contribute to improve the platform.
+---
 
-📜 License
+## Future Improvements
 
-This project is open-source and available under the MIT License
+- Donation status tracking, such as pending and completed
+- User dashboard
+- Chat system between donors and receivers
+- Notification system
 
-👨‍💻 Author
+---
 
-Developed by Ayush Singh
+## Contributing
 
-⭐ Support
+Feel free to fork this repository and contribute to improving the platform.
 
-If you like this project, give it a ⭐ on GitHub!
+---
+
+## License
+
+This project is open source and available under the MIT License.
+
+---
+
+## Author
+
+Developed by Ayush Singh.
+
+---
+
+## Support
+
+If you like this project, please give it a star on GitHub.
