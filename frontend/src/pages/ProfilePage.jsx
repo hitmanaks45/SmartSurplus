@@ -13,17 +13,26 @@ const HistoryItem = ({ item, role }) => {
     };
 
     const getStatusChip = (status) => {
-        switch (status) {
-            case 'available':
-                return <span className="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Available</span>;
-            case 'claimed':
-                return <span className="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Claimed</span>;
-            case 'delivered':
-                 return <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Delivered</span>;
-            default:
-                return null;
-        }
-    };
+    switch (status) {
+        case 'available':
+            return (
+                <span className="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                    🟢 Available
+                </span>
+            );
+
+
+        case 'delivered':
+            return (
+                <span className="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                    🔵 Delivered
+                </span>
+            );
+
+        default:
+            return null;
+    }
+};
 
     return (
         <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
@@ -62,7 +71,7 @@ const ProfilePage = () => {
           data = await donationService.getMyClaims(user.token);
         }
         setHistory(data);
-      } catch (error) {
+      } catch {
         toast.error('Could not fetch your activity history.');
       } finally {
         setIsLoading(false);
@@ -77,6 +86,29 @@ const ProfilePage = () => {
   if (isLoading || !user) { // Add a check for user object
     return <div className="text-center p-10">Loading your profile...</div>;
   }
+
+  const donorStats = history.reduce(
+    (stats, item) => {
+        if (item.status === 'available') {
+            stats.available += 1;
+        }
+
+        if (item.status === 'delivered') {
+            stats.delivered += 1;
+        }
+
+        if (item.status === 'wasted') {
+            stats.wasted += 1;
+        }
+
+        return stats;
+    },
+    { available: 0, delivered: 0, wasted: 0 }
+  );
+
+  const wasteReductionRate = history.length === 0
+    ? 0
+    : Math.round((donorStats.delivered / history.length) * 100);
 
   const ImpactCard = () => (
     <div className="bg-white p-6 rounded-xl shadow-md flex items-center gap-6">
@@ -107,6 +139,39 @@ const ProfilePage = () => {
         </div>
         
         <ImpactCard />
+
+
+{user.role === 'donor' && (
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
+        <div className="bg-white p-5 rounded-xl shadow-md text-center">
+            <p className="text-gray-500">Available</p>
+            <h2 className="text-3xl font-bold text-green-500">
+                {donorStats.available}
+            </h2>
+        </div>
+
+        <div className="bg-white p-5 rounded-xl shadow-md text-center">
+            <p className="text-gray-500">Delivered</p>
+            <h2 className="text-3xl font-bold text-blue-500">
+                {donorStats.delivered}
+            </h2>
+        </div>
+
+        <div className="bg-white p-5 rounded-xl shadow-md text-center">
+            <p className="text-gray-500">Wasted</p>
+            <h2 className="text-3xl font-bold text-red-500">
+                {donorStats.wasted}
+            </h2>
+        </div>
+
+        <div className="bg-white p-5 rounded-xl shadow-md text-center">
+            <p className="text-gray-500">Waste Reduction Rate</p>
+            <h2 className="text-3xl font-bold text-purple-500">
+                {wasteReductionRate}%
+            </h2>
+        </div>
+    </div>
+)}
 
         <div className="mt-10">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">

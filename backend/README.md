@@ -10,7 +10,7 @@ A RESTful backend API for **SmartSurplus**, a platform that connects food donors
 - **Donation Management** — Donors can create food donations with category, quantity, expiry, and geolocation.
 - **Claim System** — Receivers can browse available donations and claim them (with atomic updates to handle race conditions).
 - **GeoJSON Support** — Donations store location data as GeoJSON `Point` with a `2dsphere` index for geospatial queries.
-- **Dashboard Endpoints** — Donors can view their posted donations; receivers can view their claimed items.
+- **Dashboard Endpoints** — Donors can view their posted donations; receivers can view their delivered items.
 - **Secure Passwords** — Passwords are hashed with **bcrypt** before storage.
 - **CORS Configured** — Pre-configured for the deployed frontend on Vercel and local development.
 

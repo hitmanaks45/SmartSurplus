@@ -29,13 +29,30 @@ const createDonation = async (req, res) => {
     res.status(500).json({ success: false, message: 'Failed to create donation due to a server error. Please try again later.' });
   }
 };
+const markExpiredDonationsAsWasted = async () => {
+  await Donation.updateMany(
+    {
+      status: 'available',
+      bestBefore: { $lt: new Date() },
+    },
+    {
+      $set: { status: 'wasted' },
+    }
+  );
+};
 
 // @desc    Get all available donations
 // @route   GET /api/donations
 // @access  Public
 const getAvailableDonations = async (req, res) => {
+
+  await markExpiredDonationsAsWasted();
+
     try {
-        const donations = await Donation.find({ status: 'available' })
+       const donations = await Donation.find({
+    status: 'available',
+    bestBefore: { $gt: new Date() }
+        })
             .populate('donor', 'name')
             .sort({ createdAt: -1 });
         res.json(donations);
@@ -56,18 +73,18 @@ const claimDonation = async (req, res) => {
     const updatedDonation = await Donation.findOneAndUpdate(
       { _id: donationId, status: 'available' },
       { 
-        status: 'claimed',
+        status: 'delivered',
         receiver: receiverId // Assign the logged-in user as the receiver
       },
       { new: true } // This option tells Mongoose to return the document after the update
     );
 
     if (!updatedDonation) {
-      return res.status(409).json({ success: false, message: 'This donation is no longer available — it has already been claimed by another user. Please browse other available donations.' });
+      return res.status(409).json({ success: false, message: 'This donation is no longer available — it has already been delivered by another user. Please browse other available donations.' });
     }
 
     // If the update was successful, send a success response.
-    res.status(200).json({ success: true, message: 'Donation claimed successfully! The donor will be notified.', donation: updatedDonation });
+    res.status(200).json({ success: true, message: 'Donation delivered successfully! The donor will be notified.', donation: updatedDonation });
 
   } catch (error) {
     console.error('Claim Donation Error:', error.message);
@@ -81,6 +98,8 @@ const claimDonation = async (req, res) => {
 // @access  Private (Donors only)
 const getMyDonations = async (req, res) => {
     try {
+        await markExpiredDonationsAsWasted();
+
         const donations = await Donation.find({ donor: req.user.id }).sort({ createdAt: -1 });
         res.json(donations);
     } catch (error) {
@@ -90,7 +109,7 @@ const getMyDonations = async (req, res) => {
 };
 
 // --- NEW FUNCTION ---
-// @desc    Get all claimed donations for the logged-in receiver
+// @desc    Get all delivered donations for the logged-in receiver
 // @route   GET /api/donations/myclaims
 // @access  Private (Receivers only)
 const getMyClaims = async (req, res) => {
@@ -99,7 +118,7 @@ const getMyClaims = async (req, res) => {
         res.json(donations);
     } catch (error) {
         console.error('Fetch My Claims Error:', error.message);
-        res.status(500).json({ success: false, message: 'Unable to retrieve your claimed donations at this time. Please try again later.' });
+        res.status(500).json({ success: false, message: 'Unable to retrieve your delivered donations at this time. Please try again later.' });
     }
 };
 

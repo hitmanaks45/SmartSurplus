@@ -120,7 +120,7 @@ const HomePage = () => {
   const handleClaimDonation = async (donationId) => {
     try {
         await donationService.claimDonation(donationId, user.token);
-        toast.success('Donation claimed successfully!');
+        toast.success('Donation delivered successfully!');
         // After claiming, refresh the donations on the map to remove the pin
         fetchDonations();
     } catch (error) {
