@@ -24,8 +24,8 @@ const HistoryItem = ({ item, role }) => {
 
         case 'delivered':
             return (
-                <span className="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full shadow-sm">
-                    🔵 Delivered
+                <span className={`${role === 'receiver' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'} text-xs font-bold px-3 py-1 rounded-full shadow-sm`}>
+                    {role === 'receiver' ? '🟢 Received' : '🔵 Delivered'}
                 </span>
             );
 

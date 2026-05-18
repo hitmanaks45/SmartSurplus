@@ -19,6 +19,7 @@ const CreateDonationPage = () => {
     bestBefore: '',
     address: '',
     coordinates: null,
+    image: null,
   });
 
   const { category, foodType, quantity, bestBefore, address } = formData;
@@ -59,17 +60,25 @@ const CreateDonationPage = () => {
     }
 
     setIsLoading(true);
-    const donationData = {
-      category,
-      foodType,
-      quantity,
-      bestBefore,
-      location: {
-        type: 'Point',
-        coordinates: formData.coordinates,
-        address: formData.address,
-      },
-    };
+   const donationData = new FormData();
+
+donationData.append('category', category);
+donationData.append('foodType', foodType);
+donationData.append('quantity', quantity);
+donationData.append('bestBefore', bestBefore);
+
+donationData.append(
+  'location',
+  JSON.stringify({
+    type: 'Point',
+    coordinates: formData.coordinates,
+    address: formData.address,
+  })
+);
+
+if (formData.image) {
+  donationData.append('image', formData.image);
+}
 
     try {
       await donationService.createDonation(donationData, user.token);
@@ -77,7 +86,7 @@ const CreateDonationPage = () => {
       // --- MODIFICATION ---
       // Navigate to the map page and pass the new coordinates in the state
       navigate('/donations', { 
-        state: { newDonationCoords: donationData.location.coordinates } 
+          state: { newDonationCoords: formData.coordinates } 
       });
     } catch (error) {
       const message =
@@ -181,6 +190,24 @@ const CreateDonationPage = () => {
                 </div>
                 {formData.coordinates && <p className="text-xs text-green-500 mt-1">✓ Location found!</p>}
               </div>
+
+              <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Food Image
+              </label>
+
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    image: e.target.files[0],
+                  }))
+                }
+                className="w-full"
+              />
+            </div>
 
               <div className="pt-2">
                 <button type="submit" disabled={isLoading}
