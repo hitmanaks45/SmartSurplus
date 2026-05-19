@@ -119,7 +119,7 @@ const LandingPage = () => {
                 }}
               />
             </div>
-            <div className="absolute -bottom-6 left-6 right-6 rounded-xl border border-slate-200 bg-white p-5 text-slate-900 shadow-xl">
+            <div className="absolute -bottom-6 left-6 right-6 rounded-xl border border-slate-200 bg-white p-4 text-slate-900 shadow-xl">
               <p className="text-sm font-semibold text-slate-500">Platform focus</p>
               <p className="mt-1 text-2xl font-bold">Reduce waste. Improve access.</p>
             </div>
@@ -139,7 +139,7 @@ const LandingPage = () => {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {steps.map((step, index) => {
               const Icon = step.icon;
               return (
@@ -225,7 +225,7 @@ const LandingPage = () => {
             <h3 className="text-lg font-bold text-slate-950">SmartSurplus</h3>
             <p className="mt-1 text-sm text-slate-500">Intelligent food redistribution for stronger communities.</p>
           </div>
-          <div className="flex gap-5 text-sm font-medium text-slate-600">
+          <div className="flex gap-4 text-sm font-medium text-slate-600">
             <a href="#" className="hover:text-emerald-600">Facebook</a>
             <a href="#" className="hover:text-emerald-600">Twitter</a>
             <a href="#" className="hover:text-emerald-600">Instagram</a>

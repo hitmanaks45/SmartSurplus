@@ -28,6 +28,12 @@ const HistoryItem = ({ item, role }) => {
                     {role === 'receiver' ? '🟢 Received' : '🔵 Delivered'}
                 </span>
             );
+        case 'expired':
+            return (
+                <span className="bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                    🔴 Expired
+                </span>
+            );    
 
         default:
             return null;
@@ -97,13 +103,13 @@ const ProfilePage = () => {
             stats.delivered += 1;
         }
 
-        if (item.status === 'wasted') {
-            stats.wasted += 1;
+        if (item.status === 'expired') {
+            stats.expired += 1;
         }
 
         return stats;
     },
-    { available: 0, delivered: 0, wasted: 0 }
+    { available: 0, delivered: 0, expired: 0 }
   );
 
   const wasteReductionRate = history.length === 0
@@ -142,29 +148,29 @@ const ProfilePage = () => {
 
 
 {user.role === 'donor' && (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
-        <div className="bg-white p-5 rounded-xl shadow-md text-center">
+    <div className="grid grid-cols-2 gap-3 mt-6">
+        <div className="bg-white p-4 rounded-xl shadow-md text-center">
             <p className="text-gray-500">Available</p>
             <h2 className="text-3xl font-bold text-green-500">
                 {donorStats.available}
             </h2>
         </div>
 
-        <div className="bg-white p-5 rounded-xl shadow-md text-center">
+        <div className="bg-white p-4 rounded-xl shadow-md text-center">
             <p className="text-gray-500">Delivered</p>
             <h2 className="text-3xl font-bold text-blue-500">
                 {donorStats.delivered}
             </h2>
         </div>
 
-        <div className="bg-white p-5 rounded-xl shadow-md text-center">
-            <p className="text-gray-500">Wasted</p>
+        <div className="bg-white p-4 rounded-xl shadow-md text-center">
+            <p className="text-gray-500">Expired</p>
             <h2 className="text-3xl font-bold text-red-500">
-                {donorStats.wasted}
+                {donorStats.expired}
             </h2>
         </div>
 
-        <div className="bg-white p-5 rounded-xl shadow-md text-center">
+        <div className="bg-white p-4 rounded-xl shadow-md text-center">
             <p className="text-gray-500">Waste Reduction Rate</p>
             <h2 className="text-3xl font-bold text-purple-500">
                 {wasteReductionRate}%

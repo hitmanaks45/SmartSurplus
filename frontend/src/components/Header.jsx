@@ -140,12 +140,12 @@ const Header = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="border-t border-slate-200 bg-white px-4 py-4 shadow-lg md:hidden">
-          <nav className="mx-auto flex max-w-7xl flex-col items-center gap-3">
-            {user ? mobileAuthLinks : mobileGuestLinks}
-          </nav>
-        </div>
-      )}
+  <div className="md:hidden bg-slate-950 border-t border-slate-800 px-4 py-4">
+    <nav className="flex flex-col gap-3">
+      {user ? authLinks : guestLinks}
+    </nav>
+  </div>
+)}
     </header>
   );
 };

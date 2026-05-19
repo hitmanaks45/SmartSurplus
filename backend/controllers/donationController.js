@@ -63,7 +63,7 @@ const markExpiredDonationsAsWasted = async () => {
       bestBefore: { $lt: new Date() },
     },
     {
-      $set: { status: 'wasted' },
+      $set: { status: 'expired' },
     }
   );
 };
